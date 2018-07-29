@@ -1,0 +1,101 @@
+.top-nav {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+
+body {
+    color: #ffffff;
+}
+
+A {
+    color: #ffffff;
+}
+
+A:visited {
+    color: #ffffff;
+}
+
+A:active {
+    color: #ffffff;
+}
+
+body {
+    background: url("../img/background.jpg");
+    background-size: cover;
+}
+
+.navbar {
+    margin-top: 3.5rem;
+    color: #ffffff;
+}
+
+.navbar::after {
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+44,ffffff+100&0+44,1+61 */
+    background: -moz-linear-gradient(left, rgba(255, 255, 255, 0) 30%, rgba(255, 255, 255, 1) 70%, rgba(255, 255, 255, 1) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(left, rgba(255, 255, 255, 0) 30%, rgba(255, 255, 255, 1) 70%, rgba(255, 255, 255, 1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right, rgba(255, 255, 255, 0) 30%, rgba(255, 255, 255, 1) 70%, rgba(255, 255, 255, 1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00ffffff', endColorstr='#ffffff', GradientType=1); /* IE6-9 */
+    content: "";
+    display: block;
+    /* Вместо толщины */
+    height: 2px;
+    width: 92.38%;
+    margin-top: -6px;
+}
+
+.social .icon {
+    font-size: 2rem;
+    margin-left: 15px;
+}
+
+.name {
+    display: block;
+}
+
+.name h1 {
+    font-size: 4rem;
+    color: #ffffff;
+    font-family: "Open Sans Light";
+    margin-left: 3rem;
+    margin-top: 1.5rem;
+}
+
+.nav-link {
+    color: #ffffff;
+    font-family: "Open Sans Light";
+}
+
+.active {
+    color: #000000;
+    background: #ffffff;
+}
+
+.active a {
+    color: #000000;
+}
+
+.nav-link:hover {
+    color: #ffffff;
+    background: #000000;
+}
+
+.about_block {
+    color: #000000;
+}
+
+.info-block div {
+    position: absolute;
+    left: 27%;
+    width: 32rem;
+    top: 2rem;
+    display: none;
+}
+
+.info-block .active-block{
+    display: block;
+}
