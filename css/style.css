@@ -6,6 +6,7 @@
     padding-left: 0;
     margin-bottom: 0;
     list-style: none;
+    white-space: nowrap;
 }
 
 a {
@@ -46,9 +47,9 @@ body {
     content: "";
     display: block;
     height: 2px;
-    width: 92.38%;
+    width: 100%;
     margin-top: -6px;
-
+    margin-right: 15px;
 }
 
 .social .icon {
@@ -114,7 +115,7 @@ body {
     width: 34rem;
     left: 18.5rem;
     font-family: "Open Sans";
-    top: 2rem;
+    top: 1rem;
     display: none;
     position: absolute;
 
@@ -122,21 +123,4 @@ body {
 
 .info-block .active-block {
     display: block;
-}
-
-.spin360 {
-    -webkit-animation-name: spin;
-    -webkit-animation-duration: 3s;
-    -webkit-animation-iteration-count: 1;
-    -webkit-animation-timing-function: ease;
-    -webkit-animation-fill-mode: forwards;
-}
-
-@-webkit-keyframes spin {
-    0% {
-        -webkit-transform: rotateX(0);
-    }
-    100% {
-        -webkit-transform: rotateX(-360deg);
-    }
 }
