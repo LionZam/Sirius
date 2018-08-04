@@ -8,24 +8,27 @@
     list-style: none;
 }
 
+a {
+    color: #ffffff;
+}
+
+a:visited {
+    color: #ffffff;
+}
+
+a:active {
+    color: #ffffff;
+}
+
+a:hover {
+    color: #ffffff;
+}
+
 body {
-    color: #ffffff;
-}
-
-A {
-    color: #ffffff;
-}
-
-A:visited {
-    color: #ffffff;
-}
-
-A:active {
-    color: #ffffff;
-}
-
-body {
-    background: url("../img/background.jpg");
+    background: url("../img/background1.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     background-size: cover;
 }
 
@@ -42,15 +45,32 @@ body {
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00ffffff', endColorstr='#ffffff', GradientType=1); /* IE6-9 */
     content: "";
     display: block;
-    /* Вместо толщины */
     height: 2px;
     width: 92.38%;
     margin-top: -6px;
+
 }
 
 .social .icon {
     font-size: 2rem;
     margin-left: 15px;
+}
+
+.social .icon:hover {
+    -webkit-transition: all 500ms ease;
+    -moz-transition: all 500ms ease;
+    -ms-transition: all 500ms ease;
+    -o-transition: all 500ms ease;
+    transition: all 500ms ease;
+}
+
+.social .fa-vk:hover {
+    color: #4a76a8;
+    -webkit-transition: all 500ms ease;
+    -moz-transition: all 500ms ease;
+    -ms-transition: all 500ms ease;
+    -o-transition: all 500ms ease;
+    transition: all 500ms ease;
 }
 
 .name {
@@ -70,32 +90,53 @@ body {
     font-family: "Open Sans Light";
 }
 
-.active {
+.top-nav .active {
     color: #000000;
     background: #ffffff;
 }
 
-.active a {
+.top-nav .active a {
     color: #000000;
 }
 
-.nav-link:hover {
+.top-nav .hover {
     color: #ffffff;
     background: #000000;
+    -webkit-transition: all 500ms ease;
+    -moz-transition: all 500ms ease;
+    -ms-transition: all 500ms ease;
+    -o-transition: all 500ms ease;
+    transition: all 500ms ease;
 }
 
-.about_block {
+.info-block .item {
     color: #000000;
-}
-
-.info-block div {
-    position: absolute;
-    left: 27%;
-    width: 32rem;
+    width: 34rem;
+    left: 18.5rem;
+    font-family: "Open Sans";
     top: 2rem;
     display: none;
+    position: absolute;
+
 }
 
-.info-block .active-block{
+.info-block .active-block {
     display: block;
+}
+
+.spin360 {
+    -webkit-animation-name: spin;
+    -webkit-animation-duration: 3s;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: ease;
+    -webkit-animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotateX(0);
+    }
+    100% {
+        -webkit-transform: rotateX(-360deg);
+    }
 }
