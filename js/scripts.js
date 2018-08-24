@@ -28,9 +28,9 @@ $(document).ready(function () {
             var id = $($(this).children().eq(0)).attr('href'),
                 top = $(id).offset().top;
             if (id == '#contacts') {
-                scrollTo($(document).height() - $(window).height(), this)
+                scrollTo($(document).height() - $(window).height() + 1, this)
             } else {
-                scrollTo(top - $('.tablenav').height(), this)
+                scrollTo(top, this)
             }
         });
     }
@@ -39,7 +39,7 @@ $(document).ready(function () {
 
 
     function scrollTo(position, menuItem) {
-        newActiveTopMenuItem(menuItem);
+        /*newActiveTopMenuItem(menuItem);*/
         $('body,html').stop().animate({scrollTop: position}, 1000);
         $(menuItem).removeClass('hover');
         event.preventDefault();
@@ -67,14 +67,6 @@ $(document).ready(function () {
 
     mouseScroll();
 
-    function currentSection() {
-        $(document).bind('mousewheel', function () {
-            newActiveTopMenuItem(calculateCurrentNavItem())
-        })
-    }
-
-    currentSection();
-
     function showDetails() {
         $('.details button').on('click', function () {
             if ($('.about').css('max-height') == '270px') {
@@ -92,12 +84,13 @@ $(document).ready(function () {
     }
 
     showDetails();
-    function stickyTopNavabr(){
+
+    function stickyTopNavabr() {
         if ($(window).scrollTop() > $('.forscroll').height()) {
             $('.top-navbar').addClass('is-sticky');
             $(".top-navbar > .container").removeClass("border-gradient")
 
-        }else{
+        } else {
             $('.top-navbar').removeClass('is-sticky');
             $(".top-navbar > .container").addClass("border-gradient")
 
@@ -107,6 +100,7 @@ $(document).ready(function () {
 
     $(document).scroll(function () {
         stickyTopNavabr();
+        newActiveTopMenuItem(calculateCurrentNavItem())
     });
 
     stickyTopNavabr();
