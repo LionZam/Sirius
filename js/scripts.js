@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    var currentNavItem = calculateCurrentNavItem()
+    var currentNavItem = calculateCurrentNavItem();
 
     function calculateCurrentNavItem() {
         var result;
@@ -40,8 +40,9 @@ $(document).ready(function () {
 
     function scrollTo(position, menuItem) {
         newActiveTopMenuItem(menuItem);
-        $('body,html').animate({scrollTop: position}, 1000);
+        $('body,html').stop().animate({scrollTop: position}, 1000);
         $(menuItem).removeClass('hover');
+        event.preventDefault();
     }
 
     //Hover on topMenuItem
@@ -64,7 +65,7 @@ $(document).ready(function () {
         })
     }
 
-    mouseScroll()
+    mouseScroll();
 
     function currentSection() {
         $(document).bind('mousewheel', function () {
@@ -92,15 +93,21 @@ $(document).ready(function () {
 
     showDetails();
     function stickyTopNavabr(){
-        $(document).scroll(function () {
-            if ($(window).scrollTop() > 1) {
-                $('.top-navbar').addClass('is-sticky')
-            }else{
-                $('.top-navbar').removeClass('is-sticky')
+        if ($(window).scrollTop() > $('.forscroll').height()) {
+            $('.top-navbar').addClass('is-sticky');
+            $(".top-navbar > .container").removeClass("border-gradient")
 
-            }
-        })
+        }else{
+            $('.top-navbar').removeClass('is-sticky');
+            $(".top-navbar > .container").addClass("border-gradient")
+
+
+        }
     }
 
+    $(document).scroll(function () {
+        stickyTopNavabr();
+    });
+
     stickyTopNavabr();
-})
+});
