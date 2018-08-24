@@ -5,9 +5,6 @@
     .info-block .item{
         font-size: 15px;
     }
-    .name h1{
-        margin-top: 0.5rem;
-    }
 }
 
 /* Medium Devices, Desktops */
@@ -18,7 +15,6 @@
 /* Small Devices, Tablets */
 @media only screen and (max-width : 768px) {
     .name h1 {
-        margin-top: -1rem;
         font-size: 3rem;
     }
     .info-block .item {
@@ -28,11 +24,14 @@
 
 /* Extra Small Devices, Phones */
 @media only screen and (max-width : 480px) {
-
+    .name h1 {
+        margin-left: 1rem;
+    }
+    .border-gradient::after{
+        content: unset;
+    }
 }
-@media only screen and (max-height : 480px) {
 
-}
 /* Custom, iPhone Retina */
 @media only screen and (max-width : 320px) {
 

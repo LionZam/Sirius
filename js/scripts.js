@@ -1,59 +1,106 @@
 $(document).ready(function () {
-        var currentBlock = $('.info-block .main');
-        var currentNavItem = $('.top-nav').children().eq(0)[0];
+    var currentNavItem = calculateCurrentNavItem()
 
-        //Active navItem and current info block
-        function navBlock() {
-            $('.top-nav > .nav-item').on('click', function () {
-                $('.top-nav > .nav-item').removeClass('active');
-                $(this).addClass('active');
-                $(this).removeClass('hover');
-
-                $(currentBlock).addClass('fadeOutLeft');
-
-                setTimeout(function () {
-                    var t = $('.info-block .item');
-                    for (var k = 0;k < t.length; k++) {
-                        if ($($('.info-block .item')[k]).html() != $(currentBlock).html()) {
-                            $($('.info-block .item')[k]).removeClass('active-block');
-                        }
-                    }
-                    $('.info-block .item').removeClass('fadeOutLeft');
-                }, 1000)
-                if ($(this).html() === $('.top-nav').children().eq(0)[0].innerHTML) {
-                    activeBlock('.main', 0);
-                }
-                else if ($(this).html() === $('.top-nav').children().eq(1)[0].innerHTML) {
-                    activeBlock('.about-block', 1);
-                }
-                else if ($(this).html() === $('.top-nav').children().eq(2)[0].innerHTML) {
-                    activeBlock('.contact', 2);
-                }
-
-            });
+    function calculateCurrentNavItem() {
+        var result;
+        var topOfWindow = $(window).scrollTop();
+        if (topOfWindow <= $('#main').height() * 0.3) {
+            result = $('.tablenav').children().eq(0)[0];
+        } else if (Math.round($(document).height()) == Math.round($(window).height() + $(window).scrollTop())) {
+            result = $('.tablenav').children().eq(2)[0];
+        } else {
+            result = $('.tablenav').children().eq(1)[0];
         }
+        return result;
+    }
 
-        function activeBlock(newBlock, id){
-            $(newBlock).addClass('fadeIn').one('animationend webkitAnimationEnd MSAnimationEnd oAnimationEnd', function () {
-                $(newBlock).removeClass('fadeIn');
-            });
-            $(newBlock).addClass('active-block');
-            currentBlock = newBlock;
-            currentNavItem = $('.top-nav').children().eq(id)[0];
-        }
-        navBlock();
+    newActiveTopMenuItem(currentNavItem);
 
-        //Hover on topMenuItem
-        function topMenuHover() {
-            $('.top-nav > .nav-item').hover(function () {
+    function newActiveTopMenuItem(menuItem) {
+        currentNavItem = menuItem;
+        $('.tablenav > .nav-item').removeClass('active');
+        $(menuItem).addClass('active');
+    }
+
+
+    function navbarClickListener() {
+        $('.tablenav > .nav-item').on('click', function () {
+            var id = $($(this).children().eq(0)).attr('href'),
+                top = $(id).offset().top;
+            if (id == '#contacts') {
+                scrollTo($(document).height() - $(window).height(), this)
+            } else {
+                scrollTo(top - $('.tablenav').height(), this)
+            }
+        });
+    }
+
+    navbarClickListener();
+
+
+    function scrollTo(position, menuItem) {
+        newActiveTopMenuItem(menuItem);
+        $('body,html').animate({scrollTop: position}, 1000);
+        $(menuItem).removeClass('hover');
+    }
+
+    //Hover on topMenuItem
+    function topMenuHover() {
+        $('.tablenav > .nav-item').hover(function () {
                 if ($(this).html() !== currentNavItem.innerHTML) {
                     $(this).addClass('hover');
                 }
             },
-            function(){
+            function () {
                 $(this).removeClass('hover');
             })
-        }
-        topMenuHover();
     }
-)
+
+    topMenuHover();
+
+    function mouseScroll() {
+        $('.mousey').on('click', function () {
+            scrollTo($('#about-us').offset().top - $('.tablenav').height(), $('.tablenav').children().eq(1)[0])
+        })
+    }
+
+    mouseScroll()
+
+    function currentSection() {
+        $(document).bind('mousewheel', function () {
+            newActiveTopMenuItem(calculateCurrentNavItem())
+        })
+    }
+
+    currentSection();
+
+    function showDetails() {
+        $('.details button').on('click', function () {
+            if ($('.about').css('max-height') == '270px') {
+                $('.about').animate({
+                    'max-height': '1000px',
+                    'margin-bottom': '50px'
+                }, 1000);
+            } else {
+                $('.about').animate({
+                    'max-height': '270px',
+                    'margin-bottom': '0'
+                }, 1000);
+            }
+        })
+    }
+
+    showDetails();
+    function stickyTopNavabr(){
+        $(document).scroll(function () {
+            if ($(window).scrollTop() > 1) {
+                $('.top-navbar').addClass('is-sticky')
+            }else{
+                $('.top-navbar').removeClass('is-sticky')
+
+            }
+        })
+    }
+
+    stickyTopNavabr();
+})
